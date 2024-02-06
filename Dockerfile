@@ -32,9 +32,8 @@ RUN apt autoremove --purge -y > /dev/null && \
     rm -rf /tmp/*
 
 # Install Go
-RUN mkdir -p /opt/go && \
-    curl -LO https://go.dev/dl/go1.21.6.linux-amd64.tar.gz && \
-    tar zxvf *.tar.gz -C /opt/go && \
+RUN curl -LO https://go.dev/dl/go1.21.6.linux-amd64.tar.gz && \
+    tar zxvf *.tar.gz -C /opt/ && \
     rm *.tar.gz
 ENV GOPATH=/opt/go
 ENV PATH=/opt/go/bin:$PATH
