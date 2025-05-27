@@ -33,3 +33,13 @@ ENV SHELL="/bin/bash"
 
 USER aosp
 WORKDIR /home/aosp
+RUN curl -LO https://gomirrors.org/dl/go/go1.24.3.linux-amd64.tar.gz && \
+    tar zxvf go*.tar.gz && \
+    curl -LO https://github.com/golangci/golangci-lint/releases/download/v2.1.6/golangci-lint-2.1.6-linux-amd64.deb && \
+    sudo dpkg -i golangci-lint-*.deb && \
+    rm *.deb *.tar.gz
+ENV GOPATH=/home/aosp/go
+ENV PATH=/home/aosp/go/bin:$PATH
+
+USER aosp
+WORKDIR /home/aosp
